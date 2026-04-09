@@ -1,7 +1,10 @@
 import streamlit as st
 from groq import Groq
 
-client = Groq(api_key="")
+try:
+    client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+except:
+    client = Groq(api_key="")
 
 def calculate_bmi(weight, height):
     height_m = height / 100
